@@ -12,7 +12,8 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
-    "vue": "^2.1.0"
+    "vue": "^2.1.0",
+    "vux": "^2.1.0-rc.15"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

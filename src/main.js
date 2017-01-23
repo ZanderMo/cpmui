@@ -2,10 +2,34 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueRouter from 'vue-router'
+import { AlertPlugin, ToastPlugin } from 'vux'
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
-})
+window.API_URL = 'http://192.168.2.73:6543';
+
+import './assets/js/jquery-2.0.3.min.js';
+
+import Login from './components/SingleView/Login.vue'
+import Hubs from './components/SingleView/Hubs.vue'
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+  routes: [
+    {path:'/Login',component:Login},
+    {path:'/Hubs',component:Hubs}
+  ]
+});
+
+const app = new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app');
+
+router.beforeEach(function (to, from, next) {
+  let identity = localStorage.getItem('identity') ? localStorage.getItem('identity') : sessionStorage.getItem('identity');
+  if (!identity && to.fullPath !== "/login") {
+    next({ path: '/login' });
+  } else {
+    next();
+  }
+});

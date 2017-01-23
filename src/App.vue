@@ -1,28 +1,61 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <x-header :right-options="{showMore: true}" @on-click-more="showMenus = true">iCoolPy物联</x-header>
+    <actionsheet :menus="menus" v-model="showMenus" show-cancel>aaaa</actionsheet>
+    <router-view></router-view>
+    <tabbar>
+      <tabbar-item link="/Hubs">
+        <img slot="icon" src="./assets/images/icon_nav_button.png">
+        <span slot="label">设备</span>
+      </tabbar-item>
+      <tabbar-item show-dot>
+        <img slot="icon" src="./assets/images/icon_nav_msg.png">
+        <span slot="label">Message</span>
+      </tabbar-item>
+      <tabbar-item selected link="/component/demo">
+        <img slot="icon" src="./assets/images/icon_nav_article.png">
+        <span slot="label">Explore</span>
+      </tabbar-item>
+      <tabbar-item badge="2" link="/Login">
+        <img slot="icon" src="./assets/images/icon_nav_cell.png">
+        <span slot="label">登陆</span>
+      </tabbar-item>
+    </tabbar>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
-
-export default {
-  name: 'app',
-  components: {
-    Hello
+  import { XHeader, Actionsheet, Tabbar, TabbarItem } from 'vux' 
+  export default {
+    name: 'app',
+    components: {
+      XHeader,
+      Actionsheet,
+      Tabbar,
+      TabbarItem
+    },
+    data() {
+      return {
+        menus: {
+          menu1: 'Take Photo',
+          menu2: 'Choose from photos'
+        },
+        showMenus: false
+      }
+    },
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+body{
+  margin: 0px;
+  padding: 0px;
+  a:link,a:visited,a:hover,a:active {
+    text-decoration:none;
+  }
+    #app {
+      margin: 0px;
+      padding: 0px;
+    }
+  }
 </style>
