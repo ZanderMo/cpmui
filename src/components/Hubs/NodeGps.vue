@@ -102,7 +102,7 @@
             IsHasNode(){
                 if(!this.$route.query.Node.Id)
                 {
-                    this.$router.push({path: '/Hubs'});
+                    this.$router.push({path: '/Hubs'});  //有问题，无法跳转。
                 }else{
                     this.GetGps();
                 }
