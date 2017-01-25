@@ -12,6 +12,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "moment": "^2.17.1",
     "vue": "^2.1.0",
     "vux": "^2.1.0-rc.15"
   },

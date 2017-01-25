@@ -4,7 +4,7 @@
     <group>
       <x-input title="用户:" name="UserName" v-model="UserName" placeholder="请输入用户" is-type="china-name"></x-input>
       <x-input title="密码:" name="PassWord" v-model="PassWord" placeholder="请输入密码"></x-input>
-      <x-button @click.native="Login">登 陆</x-button>
+      <x-button @click.native="Login" plain type="primary">登 陆</x-button>
     </group>
     <toast v-model="Toast.Show" :type="Toast.Type">{{Toast.Text}}</toast>
   </div>
@@ -86,6 +86,5 @@
 <style lang="less" scoped>
 .Login-Box{
   margin:0px;
-  padding:20px;
 }
 </style>
